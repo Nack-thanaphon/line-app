@@ -5,9 +5,6 @@ function Profile({ profile }: any) {
     return (
       <div>
         <p>ไม่พบข้อมูล</p>
-        <div className="curser-pointer bg-green-400 text-black rounded-[10px] p-5 font-bold w-full  my-4 mb-2">
-          ล็อคอินด้วย Line
-        </div>
       </div>
     );
 
@@ -19,7 +16,7 @@ function Profile({ profile }: any) {
           className="rounded-full w-[120px] h-[120px] mx-auto m-4"
         />
       </div>
-      <h1 className="font-bold text-[1.4rem] text-center">ข้อมูลผู้ Login ปัจจุบัน</h1>
+      <h1 className="font-bold text-[1.4rem] text-center">ข้อมูลผู้ใช้งานปัจจุบัน</h1>
       <hr className="my-5" />
       <div className="mb-4">
         <h1 className="font-bold text-[1.3rem]">ProfileId</h1>
