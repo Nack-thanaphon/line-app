@@ -1,7 +1,7 @@
 import React from "react";
 
-function Profile({ user }: any) {
-  if (!user)
+function Profile({ profile }: any) {
+  if (!profile)
     return (
       <div>
         <p>ไม่พบข้อมูล</p>
@@ -15,36 +15,28 @@ function Profile({ user }: any) {
     <>
       <div className="py-4">
         <img
-          src={user.url}
+          src={profile.pictureUrl}
           className="rounded-full w-[120px] h-[120px] mx-auto m-4"
         />
       </div>
       <h1 className="font-bold text-[1.4rem] text-center">ข้อมูลผู้ Login ปัจจุบัน</h1>
       <hr className="my-5" />
       <div className="mb-4">
-        <h1 className="font-bold text-[1.3rem]">ชื่อ</h1>
-        <p>{user.username}</p>
+        <h1 className="font-bold text-[1.3rem]">ProfileId</h1>
+        <p>{profile.userId}</p>
       </div>
       <div className="mb-4">
-        <h1 className="font-bold text-[1.3rem]">ลิงค์</h1>
-        <p>{user.url}</p>
+        <h1 className="font-bold text-[1.3rem]">Name</h1>
+        <p>{profile.displayName}</p>
       </div>
       <div className="mb-4">
-        <h1 className="font-bold text-[1.3rem]">อีเมลล์</h1>
-        <p>{user.email}</p>
-      </div>
-      <div className="mb-4">
-        <h1 className="font-bold text-[1.3rem]">LineId</h1>
-        <p>{user.lineId}</p>
-      </div>
-      <div className="mb-4">
-        <h1 className="font-bold text-[1.3rem]">UserId</h1>
-        <p>{user.userId}</p>
+        <h1 className="font-bold text-[1.3rem]">Status</h1>
+        <p>{profile.statusMessage}</p>
       </div>
       <div className="mb-4">
         <h1 className="font-bold text-[1.3rem]">JsonData</h1>
-        <div className="p-4  bg-slate-300 rounded-[10px] my-3">
-          <pre className="text-[0.8rem] text-nowrap">{JSON.stringify(user, null, 2)}</pre>
+        <div className="p-4  bg-slate-300 rounded-[10px] my-3 overflow-x-scroll">
+          <pre className="text-[0.8rem] text-nowrap">{JSON.stringify(profile, null, 2)}</pre>
         </div>
       </div>
 

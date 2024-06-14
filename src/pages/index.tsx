@@ -2,12 +2,21 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import Profile from "@/components/Profile";
 import ListUser from "@/components/ListUser";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import liff from "@line/liff";
 
 const inter = Inter({ subsets: ["latin"] });
 
+interface Profile {
+  userId?: string;
+  displayName?: string;
+  statusMessage?: string;
+  pictureUrl?: string;
+}
+
 export default function Home() {
+  const [profile, setProfile] = useState<Profile | null>(null);
+
   const user = [
     {
       username: "admin1",
@@ -56,14 +65,14 @@ export default function Home() {
 
   const fetchUserProfile = async () => {
     try {
-      liff.getProfile().then((profile) => {
-        console.log(profile);
+      liff.getProfile().then(async (profile) => {
+        await setProfile(profile);
       });
     } catch (error) {
       console.error("Error fetching profile: ", error);
     }
   };
-  
+
   const loginInit = () => {
     liff
       .init({
@@ -107,7 +116,7 @@ export default function Home() {
           <ListUser data={user} />
         </div>
         <div className="shadow-sm sm:p-5   p-5 w-full rounded-[20px] mb-2  bg-white h-fit">
-          <Profile />
+          <Profile profile={profile} />
         </div>
       </div>
     </div>
