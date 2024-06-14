@@ -51,8 +51,8 @@ export default function Home() {
     }
   ];
 
-  let LiffID = "2002643017-7pYpek5O";
-  let LiffUrl = "https://liff.line.me/2002643017-7pYpek5O";
+  let LiffID = "2005619015-0Bl842BP";
+  let LiffUrl = "https://liff.line.me/2005619015-0Bl842BP";
 
   const fetchUserProfile = async () => {
     try {
