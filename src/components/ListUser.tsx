@@ -1,7 +1,7 @@
 import React from "react";
 
 function ListUser({ data }: any) {
-  // console.log(data);
+  console.log(data);
   return (
     <div className="mt-4">
       <div className="flex overflow-x-scroll my-4">
@@ -9,7 +9,7 @@ function ListUser({ data }: any) {
           return (
             <div key={i} className="flex-shrink-0 w-24 mr-5">
               <img
-                src={item.url}
+                src={item.pictureUrl}
                 className="rounded-full w-[100px] h-[100px] fit-cover m-4"
               />
             </div>
