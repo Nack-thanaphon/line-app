@@ -27,7 +27,7 @@ export default function Home() {
       );
       // console.log(response.data)
       setUserdata(response.data);
-      setCount(response.data)
+      setCount(response.data.length)
     } catch (error) {
       console.error(error);
     }
@@ -83,7 +83,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    loginInit();
+    // loginInit();
     user();
   }, []);
   return (
@@ -93,7 +93,7 @@ export default function Home() {
           Line-Login-Taining
         </p>
         <h1 className="mt-3">
-          <span className="font-bold">จำนวนทั้งหมด</span> {count}
+          <span className="font-bold">จำนวนทั้งหมด</span> {count} ท่าน
         </h1>
         <h1>
           <span className="font-bold">Database</span> : mongo-db
