@@ -18,6 +18,7 @@ interface Profile {
 export default function Home() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [userdata, setUserdata] = useState([]);
+  const [count, setCount] = useState(0);
 
   const user = async () => {
     try {
@@ -26,6 +27,7 @@ export default function Home() {
       );
       // console.log(response.data)
       setUserdata(response.data);
+      setCount(response.data)
     } catch (error) {
       console.error(error);
     }
@@ -91,7 +93,7 @@ export default function Home() {
           Line-Login-Taining
         </p>
         <h1 className="mt-3">
-          <span className="font-bold">จำนวนทั้งหมด</span> {user.length}
+          <span className="font-bold">จำนวนทั้งหมด</span> {count}
         </h1>
         <h1>
           <span className="font-bold">Database</span> : mongo-db
