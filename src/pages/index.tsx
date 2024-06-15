@@ -21,7 +21,9 @@ export default function Home() {
 
   const user = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/user/getAll");
+      const response = await axios.get(
+        "https://line-webhook-s2nn.onrender.com/user/getAll"
+      );
       // console.log(response.data)
       setUserdata(response.data);
     } catch (error) {
@@ -43,7 +45,7 @@ export default function Home() {
             pictureUrl: profile.pictureUrl
           };
           const response = await axios.post(
-            "http://localhost:3000/user/create-user",
+            "https://line-webhook-s2nn.onrender.com/user/create-user",
             data
           );
 
