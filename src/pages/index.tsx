@@ -15,6 +15,7 @@ interface Profile {
   pictureUrl?: string;
 }
 
+
 export default function Home() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [userdata, setUserdata] = useState([]);
@@ -83,7 +84,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // loginInit();
+    loginInit();
     user();
   }, []);
   return (
