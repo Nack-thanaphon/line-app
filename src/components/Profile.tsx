@@ -183,7 +183,7 @@ async function sendPost(userId: string, displayName: string) {
   const url = "https://line-webhook-s2nn.onrender.com/sendLine";
   const data = DataforSend(userId, displayName);
   try {
-    const response = await axios.post(url, data, {
+    const response = await axios.post(url, JSON.stringify(data), {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${Token}`
@@ -191,8 +191,8 @@ async function sendPost(userId: string, displayName: string) {
     });
     return response.data;
   } catch (error) {
-    console.error(`Error in sendPost: ${error}`);
-    throw error;
+    console.log(`Error in sendPost: ${error}`);
+    // throw error;
   }
 }
 
