@@ -9,14 +9,14 @@ const now = new Date();
 const currentTime = now.toLocaleTimeString();
 
 const DataforSend = (userId: string, userName: string) => {
-  var hello = {};
-  if (userName !== "") {
-    hello = {
-      type: "text",
-      text: "สวัสดีคุณ " + userName,
-      contents: []
-    };
-  }
+  // var hello = {};
+  // if (userName !== "") {
+  //   hello = {
+  //     type: "text",
+  //     text: "สวัสดีคุณ " + userName,
+  //     contents: []
+  //   };
+  // }
   return {
     to: userId,
     messages: [
@@ -42,7 +42,6 @@ const DataforSend = (userId: string, userName: string) => {
             layout: "vertical",
             spacing: "md",
             contents: [
-              hello,
               {
                 type: "text",
                 text: "Server Status",
