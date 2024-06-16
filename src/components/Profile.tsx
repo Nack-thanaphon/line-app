@@ -185,6 +185,7 @@ async function sendPost(userId: string, displayName: string) {
   try {
     const response = await axios.post(url, data, {
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${Token}`
       }
     });
