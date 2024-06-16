@@ -196,12 +196,12 @@ async function sendPost(userId: string, displayName: string) {
 }
 
 function Profile({ profile }: any) {
-  // if (!profile)
-  //   return (
-  //     <div>
-  //       <p>ไม่พบข้อมูล</p>
-  //     </div>
-  //   );
+  if (!profile)
+    return (
+      <div>
+        <p>ไม่พบข้อมูล</p>
+      </div>
+    );
 
   return (
     <>
