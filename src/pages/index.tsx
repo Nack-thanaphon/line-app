@@ -84,7 +84,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // loginInit();
+    loginInit();
     user();
   }, []);
   return (
