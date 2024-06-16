@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 var Token =
   "e1l7kAgUdMdDoCmJs3xyDu0R1yXIGedLufWKFYcAGQjgERyrPzImX6w14qLAXKWC/ZHsPuaRNR84k4V03tn0ZakqxVCLdTwChapiTEn1NnnW1nfvqhDlx0KFHMk8wRUXuFoeFZy5NlcnTpEKGT3hdAdB04t89/1O/w1cDnyilFU=";
 var groupId = "Ccd2e64934b5aeac2fc44551f32f51940";
@@ -191,6 +191,14 @@ async function sendPost(userId: string, displayName: string) {
         Authorization: `Bearer ${Token}`
       }
     });
+
+    if (response.data.message === "success") {
+      Swal.fire({
+        title: "สำเร็จ!",
+        text: "ส่งข้อความสำเร็จ",
+        icon: "success"
+      });
+    }
     return response.data;
   } catch (error) {
     console.log(`Error in sendPost: ${error}`);
@@ -241,13 +249,13 @@ function Profile({ profile }: any) {
 
       <div className="sm:flex justify-content-between mt-[2px]">
         <button
-          className="curser-pointer bg-green-400 text-black rounded-[10px] p-5 font-bold w-full mb-2 sm:mr-1"
+          className="curser-pointer bg-green-400 active:bg-green-600 text-black rounded-[10px] p-5 font-bold w-full mb-2 sm:mr-1"
           onClick={() => sendPost(profile.userId, profile.displayName)}
         >
           ส่งข้อความหาฉัน
         </button>
         <button
-          className="curser-pointer bg-green-400 text-black rounded-[10px] p-5 font-bold w-full  mb-2"
+          className="curser-pointer bg-green-400 active:bg-green-600 text-black rounded-[10px] p-5 font-bold w-full  mb-2"
           onClick={() => sendPost(groupId, "")}
         >
           ส่งข้อความหาภายในกลุ่ม
