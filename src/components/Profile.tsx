@@ -9,15 +9,16 @@ const now = new Date();
 const currentTime = now.toLocaleTimeString();
 
 const DataforSend = (userId: string, userName: string) => {
-  // var hello = {};
-  // if (userName !== "") {
-  //   hello = {
-  //     type: "text",
-  //     text: "สวัสดีคุณ " + userName,
-  //     contents: []
-  //   };
-  // }
+  var hello = {};
+  if (userName !== "") {
+    hello = {
+      type: "text",
+      text: "สวัสดีคุณ " + userName,
+      contents: []
+    };
+  }
   return {
+
     to: userId,
     messages: [
       {
@@ -183,14 +184,10 @@ const DataforSend = (userId: string, userName: string) => {
 };
 
 async function sendPost(userId: string, displayName: string) {
-  const url = "https://api.line.me/v2/bot/message/push";
+  const url = "https://line-webhook-s2nn.onrender.com/sendLine";
   const data = DataforSend(userId, displayName);
   try {
-    const response = await axios.post(url, data, {
-      headers: {
-        Authorization: `Bearer ${Token}`
-      }
-    });
+    const response = await axios.post(url, data);
     return response.data;
   } catch (error) {
     console.error(`Error in sendPost: ${error}`);
@@ -199,12 +196,12 @@ async function sendPost(userId: string, displayName: string) {
 }
 
 function Profile({ profile }: any) {
-  if (!profile)
-    return (
-      <div>
-        <p>ไม่พบข้อมูล</p>
-      </div>
-    );
+  // if (!profile)
+  //   return (
+  //     <div>
+  //       <p>ไม่พบข้อมูล</p>
+  //     </div>
+  //   );
 
   return (
     <>
