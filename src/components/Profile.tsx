@@ -9,181 +9,183 @@ const now = new Date();
 const currentTime = now.toLocaleTimeString();
 
 const DataforSend = (userId: string, userName: string) => {
-  return {
-    to: userId,
-    messages: [
-      {
-        type: "flex",
-        altText: "🏥 Server Status",
-        contents: {
-          type: "bubble",
-          hero: {
-            type: "image",
-            url: "https://media.jobthai.com/v1/images/logo-pic-map/206659_logo_20220304152555.jpeg",
-            size: "full",
-            aspectRatio: "20:13",
-            aspectMode: "cover",
-            action: {
-              type: "uri",
-              label: "Action",
-              uri: "https://linecorp.com/"
-            }
+  const message = {
+    type: "flex",
+    altText: "🏥 Server Status",
+    contents: {
+      type: "bubble",
+      hero: {
+        type: "image",
+        url: "https://media.jobthai.com/v1/images/logo-pic-map/206659_logo_20220304152555.jpeg",
+        size: "full",
+        aspectRatio: "20:13",
+        aspectMode: "cover",
+        action: {
+          type: "uri",
+          label: "Action",
+          uri: "https://linecorp.com/"
+        }
+      },
+      body: {
+        type: "box",
+        layout: "vertical",
+        spacing: "md",
+        contents: [
+          {
+            type: "text",
+            text: userName !== "" ? "สวัสดีคุณ " + userName : "",
+            contents: []
           },
-          body: {
+          {
+            type: "text",
+            text: "Server Status",
+            weight: "bold",
+            size: "xl",
+            gravity: "center",
+            wrap: true,
+            contents: []
+          },
+          {
             type: "box",
-            layout: "vertical",
-            spacing: "md",
+            layout: "baseline",
+            margin: "md",
             contents: [
               {
-                type: "text",
-                text: userName !== "" ? "สวัสดีคุณ " + userName : "",
-                contents: []
+                type: "icon",
+                url: "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+                size: "sm"
+              },
+              {
+                type: "icon",
+                url: "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+                size: "sm"
+              },
+              {
+                type: "icon",
+                url: "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+                size: "sm"
+              },
+              {
+                type: "icon",
+                url: "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+                size: "sm"
+              },
+              {
+                type: "icon",
+                url: "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png",
+                size: "sm"
               },
               {
                 type: "text",
-                text: "Server Status",
-                weight: "bold",
-                size: "xl",
-                gravity: "center",
-                wrap: true,
+                text: "4.0",
+                size: "sm",
+                color: "#999999",
+                flex: 0,
+                margin: "md",
                 contents: []
-              },
+              }
+            ]
+          },
+          {
+            type: "box",
+            layout: "vertical",
+            spacing: "sm",
+            margin: "lg",
+            contents: [
               {
                 type: "box",
                 layout: "baseline",
-                margin: "md",
+                spacing: "sm",
                 contents: [
                   {
-                    type: "icon",
-                    url: "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
-                    size: "sm"
-                  },
-                  {
-                    type: "icon",
-                    url: "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
-                    size: "sm"
-                  },
-                  {
-                    type: "icon",
-                    url: "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
-                    size: "sm"
-                  },
-                  {
-                    type: "icon",
-                    url: "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
-                    size: "sm"
-                  },
-                  {
-                    type: "icon",
-                    url: "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png",
-                    size: "sm"
+                    type: "text",
+                    text: "Date",
+                    size: "sm",
+                    color: "#AAAAAA",
+                    flex: 1,
+                    contents: []
                   },
                   {
                     type: "text",
-                    text: "4.0",
+                    text: currentTime,
                     size: "sm",
-                    color: "#999999",
-                    flex: 0,
-                    margin: "md",
+                    color: "#666666",
+                    flex: 4,
+                    wrap: true,
                     contents: []
                   }
                 ]
               },
               {
                 type: "box",
-                layout: "vertical",
+                layout: "baseline",
                 spacing: "sm",
-                margin: "lg",
                 contents: [
                   {
-                    type: "box",
-                    layout: "baseline",
-                    spacing: "sm",
-                    contents: [
-                      {
-                        type: "text",
-                        text: "Date",
-                        size: "sm",
-                        color: "#AAAAAA",
-                        flex: 1,
-                        contents: []
-                      },
-                      {
-                        type: "text",
-                        text: currentTime,
-                        size: "sm",
-                        color: "#666666",
-                        flex: 4,
-                        wrap: true,
-                        contents: []
-                      }
-                    ]
+                    type: "text",
+                    text: "Server Status #1",
+                    size: "sm",
+                    color: "#AAAAAA",
+                    flex: 1,
+                    wrap: false,
+                    contents: []
                   },
                   {
-                    type: "box",
-                    layout: "baseline",
-                    spacing: "sm",
-                    contents: [
-                      {
-                        type: "text",
-                        text: "Server Status #1",
-                        size: "sm",
-                        color: "#AAAAAA",
-                        flex: 1,
-                        wrap: false,
-                        contents: []
-                      },
-                      {
-                        type: "text",
-                        text: "กำลังใช้งาน",
-                        size: "sm",
-                        color: "#04A223FF",
-                        flex: 1,
-                        wrap: true,
-                        contents: []
-                      }
-                    ]
+                    type: "text",
+                    text: "กำลังใช้งาน",
+                    size: "sm",
+                    color: "#04A223FF",
+                    flex: 1,
+                    wrap: true,
+                    contents: []
+                  }
+                ]
+              },
+              {
+                type: "box",
+                layout: "baseline",
+                spacing: "sm",
+                contents: [
+                  {
+                    type: "text",
+                    text: "Server Status #2",
+                    size: "sm",
+                    color: "#AAAAAA",
+                    flex: 1,
+                    wrap: false,
+                    contents: []
                   },
                   {
-                    type: "box",
-                    layout: "baseline",
-                    spacing: "sm",
-                    contents: [
-                      {
-                        type: "text",
-                        text: "Server Status #2",
-                        size: "sm",
-                        color: "#AAAAAA",
-                        flex: 1,
-                        wrap: false,
-                        contents: []
-                      },
-                      {
-                        type: "text",
-                        text: "ใช้งานไม่ได้",
-                        size: "sm",
-                        color: "#DA0202FF",
-                        flex: 1,
-                        wrap: true,
-                        contents: []
-                      }
-                    ]
+                    type: "text",
+                    text: "ใช้งานไม่ได้",
+                    size: "sm",
+                    color: "#DA0202FF",
+                    flex: 1,
+                    wrap: true,
+                    contents: []
                   }
                 ]
               }
             ]
           }
-        }
+        ]
       }
-    ]
+    }
   };
+
+  let body = {
+    to: userId,
+    messages: [message]
+  };
+
+  return body;
 };
 
 async function sendPost(userId: string, displayName: string) {
   const url = "https://line-webhook-s2nn.onrender.com/sendLine";
   const data = DataforSend(userId, displayName);
   try {
-    const response = await axios.post(url, JSON.stringify(data), {
+    const response = await axios.post(url, data, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${Token}`
