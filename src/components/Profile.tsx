@@ -33,7 +33,7 @@ const DataforSend = (userId: string, userName: string) => {
         contents: [
           {
             type: "text",
-            text: userName !== "" ? "สวัสดีคุณ " + userName : "",
+            text: userName !== "" ? "สวัสดีคุณ " + userName : "report",
             contents: []
           },
           {
