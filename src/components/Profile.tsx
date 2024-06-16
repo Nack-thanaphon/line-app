@@ -18,7 +18,6 @@ const DataforSend = (userId: string, userName: string) => {
     };
   }
   return {
-
     to: userId,
     messages: [
       {
@@ -43,6 +42,7 @@ const DataforSend = (userId: string, userName: string) => {
             layout: "vertical",
             spacing: "md",
             contents: [
+              hello,
               {
                 type: "text",
                 text: "Server Status",
@@ -187,7 +187,11 @@ async function sendPost(userId: string, displayName: string) {
   const url = "https://line-webhook-s2nn.onrender.com/sendLine";
   const data = DataforSend(userId, displayName);
   try {
-    const response = await axios.post(url, data);
+    const response = await axios.post(url, data, {
+      headers: {
+        Authorization: `Bearer ${Token}`
+      }
+    });
     return response.data;
   } catch (error) {
     console.error(`Error in sendPost: ${error}`);
