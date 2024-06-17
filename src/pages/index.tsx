@@ -117,12 +117,9 @@ export default function Home() {
     localStorage.clear();
   };
 
-  const userData = localStorage.getItem("userData");
   useEffect(() => {
     checkTotalSend();
-    if (userData) {
-      setProfile(JSON.parse(userData));
-    }
+    fetchUserProfile();
     user();
   }, []);
 
