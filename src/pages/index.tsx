@@ -68,6 +68,8 @@ export default function Home() {
           pictureUrl: profile.pictureUrl
         };
 
+        localStorage.setItem("userData", JSON.stringify(data));
+
         const response = await axios.post(
           "https://line-webhook-s2nn.onrender.com/user/create-user",
           data
@@ -110,8 +112,12 @@ export default function Home() {
     return friend.friendFlag;
   };
 
+  const userData = localStorage.getItem("userData");
   useEffect(() => {
     checkTotalSend();
+    if (userData) {
+      setProfile(JSON.parse(userData));
+    }
     user();
   }, []);
 
