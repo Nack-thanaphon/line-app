@@ -124,10 +124,10 @@ export default function Home() {
       <div className="sm:text-center mb-4 p-6 bg-white sm:m-4 m-4 rounded-[10px]">
         <p className="sm:text-[3rem] font-bold text-green-500">Line-Login</p>
         <h1 className="mt-3">
-          <span className="font-bold">จำนวนทั้งหมด</span> {totalSend} ท่าน
+          <span className="font-bold">จำนวนทั้งหมด</span> {count} ท่าน
         </h1>
-        <h1 className="mt-3">
-          <span className="font-bold">จำนวนส่งข้อความ</span> {count} ครั้ง
+        <h1 className="">
+          <span className="font-bold">จำนวนส่งข้อความ</span> {totalSend} ครั้ง
         </h1>
         <h1>
           <span className="font-bold">Database</span> : mongo-db
