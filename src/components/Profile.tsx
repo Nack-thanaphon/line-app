@@ -193,7 +193,11 @@ const DataforSend = (userId: string, userName: string) => {
   return body;
 };
 
-async function sendPost(userId: string, displayName: string) {
+async function sendPost(
+  userId: string,
+  displayName: string,
+  checkTotalSend: any
+) {
   const url = "https://line-webhook-s2nn.onrender.com/sendLine";
   const data = DataforSend(userId, displayName);
   try {
@@ -205,6 +209,7 @@ async function sendPost(userId: string, displayName: string) {
     });
 
     if (response.data.message === "success") {
+      checkTotalSend();
       Swal.fire({
         title: "สำเร็จ!",
         text: "ส่งข้อความสำเร็จ",
@@ -218,7 +223,7 @@ async function sendPost(userId: string, displayName: string) {
   }
 }
 
-function Profile({ profile, loginInit }: any) {
+function Profile({ profile, loginInit, checkTotalSend }: any) {
   if (!profile)
     return (
       <div className="py-6">
@@ -233,9 +238,7 @@ function Profile({ profile, loginInit }: any) {
             src="https://upload.wikimedia.org/wikipedia/commons/2/2e/LINE_New_App_Icon_%282020-12%29.png"
             className="w-[40px] mr-4"
           />{" "}
-          <div className="my-auto font-bold">
-          Login With Line
-          </div>
+          <div className="my-auto font-bold">Login With Line</div>
         </div>
       </div>
     );
@@ -276,13 +279,15 @@ function Profile({ profile, loginInit }: any) {
       <div className="sm:flex justify-content-between mt-[2px]">
         <button
           className="curser-pointer bg-green-400 active:bg-green-600 text-black rounded-[10px] p-5 font-bold w-full mb-2 sm:mr-1"
-          onClick={() => sendPost(profile.userId, profile.displayName)}
+          onClick={() =>
+            sendPost(profile.userId, profile.displayName, checkTotalSend)
+          }
         >
           ส่งข้อความหาฉัน
         </button>
         <button
           className="curser-pointer bg-green-400 active:bg-green-600 text-black rounded-[10px] p-5 font-bold w-full  mb-2"
-          onClick={() => sendPost(groupId, "")}
+          onClick={() => sendPost(groupId, "", checkTotalSend)}
         >
           ส่งข้อความหาภายในกลุ่ม
         </button>

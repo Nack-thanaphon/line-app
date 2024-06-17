@@ -19,6 +19,7 @@ export default function Home() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [userdata, setUserdata] = useState([]);
   const [count, setCount] = useState(0);
+  const [totalSend, setTotalSend] = useState(0);
 
   const user = async () => {
     try {
@@ -36,6 +37,26 @@ export default function Home() {
   let LiffID = "2005619015-0Bl842BP";
   let LiffUrl = "https://liff.line.me/2005619015-0Bl842BP";
   let LineOa = "https://line.me/R/ti/p/@634aahso";
+
+  let Token =
+    "e1l7kAgUdMdDoCmJs3xyDu0R1yXIGedLufWKFYcAGQjgERyrPzImX6w14qLAXKWC/ZHsPuaRNR84k4V03tn0ZakqxVCLdTwChapiTEn1NnnW1nfvqhDlx0KFHMk8wRUXuFoeFZy5NlcnTpEKGT3hdAdB04t89/1O/w1cDnyilFU=";
+
+  const checkTotalSend = async () => {
+    try {
+      const response = await axios.get(
+        "https://api.line.me/v2/bot/message/quota",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${Token}`
+          }
+        }
+      );
+      setTotalSend(response.data.value);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const fetchUserProfile = async () => {
     try {
@@ -77,7 +98,7 @@ export default function Home() {
             await fetchUserProfile();
           }
           if (!isFriend) {
-            alert("กรุณาเพิ่มเพื่อนก่อนใช้งาน")
+            alert("กรุณาเพิ่มเพื่อนก่อนใช้งาน");
             window.location.href = LineOa;
           }
           // else {
@@ -95,16 +116,18 @@ export default function Home() {
   };
   useEffect(() => {
     // loginInit();
+    checkTotalSend()
     user();
   }, []);
   return (
     <div className="my-5">
       <div className="sm:text-center mb-4 p-6 bg-white sm:m-4 m-4 rounded-[10px]">
-        <p className="sm:text-[3rem] font-bold text-green-500">
-          Line-Login-Taining
-        </p>
+        <p className="sm:text-[3rem] font-bold text-green-500">Line-Login</p>
         <h1 className="mt-3">
-          <span className="font-bold">จำนวนทั้งหมด</span> {count} ท่าน
+          <span className="font-bold">จำนวนทั้งหมด</span> {totalSend} ท่าน
+        </h1>
+        <h1 className="mt-3">
+          <span className="font-bold">จำนวนส่งข้อความ</span> {count} ครั้ง
         </h1>
         <h1>
           <span className="font-bold">Database</span> : mongo-db
@@ -118,7 +141,11 @@ export default function Home() {
           <ListUser data={userdata} />
         </div>
         <div className="shadow-sm sm:p-5   p-5 w-full rounded-[20px] mb-2  bg-white h-fit">
-          <Profile profile={profile} loginInit={loginInit} />
+          <Profile
+            profile={profile}
+            loginInit={loginInit}
+            checkTotalSend={checkTotalSend}
+          />
         </div>
       </div>
     </div>
