@@ -123,7 +123,7 @@ export default function Home() {
     checkTotalSend();
     user();
     if (isLogin) {
-      loginInit();
+      fetchUserProfile();
     }
   }, []);
   return (
