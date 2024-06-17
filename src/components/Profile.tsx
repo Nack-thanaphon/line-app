@@ -282,7 +282,7 @@ function Profile({ profile, PressloginIn, checkTotalSend ,logout}: any) {
 
       <div className="sm:flex justify-content-between mt-[2px]">
         <button
-          className="curser-pointer bg-green-400 active:bg-green-600 text-black rounded-[10px] p-5 font-bold w-full mb-2 sm:mr-1"
+          className="curser-pointer bg-green-600 active:bg-green-400 text-black rounded-[10px] p-5 font-bold w-full mb-2 sm:mr-1"
           onClick={() =>
             sendPost(profile.userId, profile.displayName, checkTotalSend)
           }
@@ -290,7 +290,7 @@ function Profile({ profile, PressloginIn, checkTotalSend ,logout}: any) {
           ส่งข้อความหาฉัน
         </button>
         <button
-          className="curser-pointer bg-green-400 active:bg-green-600 text-black rounded-[10px] p-5 font-bold w-full  mb-2"
+          className="curser-pointer bg-green-600 active:bg-green-400 text-black rounded-[10px] p-5 font-bold w-full  mb-2"
           onClick={() => sendPost(groupId, "", checkTotalSend)}
         >
           ส่งข้อความหาภายในกลุ่ม
@@ -298,7 +298,7 @@ function Profile({ profile, PressloginIn, checkTotalSend ,logout}: any) {
       </div>
       <div className=" mt-[2px]">
         <button
-          className="curser-pointer bg-red-400 active:bg-red-600 text-white rounded-[10px] p-5 font-bold w-full mb-2 sm:mr-1"
+          className="curser-pointer bg-red-600 active:bg-red-400 text-white rounded-[10px] p-5 font-bold w-full mb-2 sm:mr-1"
           onClick={() => logout}
         >
           ออกจากระบบ

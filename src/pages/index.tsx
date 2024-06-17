@@ -122,8 +122,9 @@ export default function Home() {
   };
 
   const logout = () => {
-    liff.logout();
     localStorage.clear();
+    liff.logout()
+    window.location.reload()
   };
 
   useEffect(() => {
