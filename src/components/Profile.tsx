@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import liff from "@line/liff";
 var Token =
   "e1l7kAgUdMdDoCmJs3xyDu0R1yXIGedLufWKFYcAGQjgERyrPzImX6w14qLAXKWC/ZHsPuaRNR84k4V03tn0ZakqxVCLdTwChapiTEn1NnnW1nfvqhDlx0KFHMk8wRUXuFoeFZy5NlcnTpEKGT3hdAdB04t89/1O/w1cDnyilFU=";
 var groupId = "Ccd2e64934b5aeac2fc44551f32f51940";
@@ -224,6 +225,11 @@ async function sendPost(
   }
 }
 
+const logout = () => {
+  liff.logout();
+  localStorage.clear();
+};
+
 function Profile({ profile, loginInit, checkTotalSend }: any) {
   if (!profile)
     return (
@@ -291,6 +297,14 @@ function Profile({ profile, loginInit, checkTotalSend }: any) {
           onClick={() => sendPost(groupId, "", checkTotalSend)}
         >
           ส่งข้อความหาภายในกลุ่ม
+        </button>
+      </div>
+      <div className=" mt-[2px]">
+        <button
+          className="curser-pointer bg-red-400 active:bg-red-600 text-white rounded-[10px] p-5 font-bold w-full mb-2 sm:mr-1"
+          onClick={() => logout()}
+        >
+          ออกจากระบบ
         </button>
       </div>
       <div className="mt-3">
