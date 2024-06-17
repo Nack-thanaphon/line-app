@@ -35,7 +35,8 @@ export default function Home() {
 
   let LiffID = "2005619015-0Bl842BP";
   let LiffUrl = "https://liff.line.me/2005619015-0Bl842BP";
-
+  let LineOa = "https://line.me/R/ti/p/@634aahso";
+  
   const fetchUserProfile = async () => {
     try {
       liff.getProfile().then(async (profile) => {
@@ -71,9 +72,13 @@ export default function Home() {
       })
       .then(() => {
         liff.ready.then(async () => {
+          const isFriend = await getFriendship();
           if (liff.isInClient() || liff.isLoggedIn()) {
             await fetchUserProfile();
-          } 
+          }
+          if (!isFriend) {
+            window.location.href = LineOa;
+          }
           // else {
           //   // await liff.login({
           //   //   redirectUri: LiffUrl
@@ -83,6 +88,10 @@ export default function Home() {
       });
   };
 
+  const getFriendship = async () => {
+    const friend = await liff.getFriendship();
+    return friend.friendFlag;
+  };
   useEffect(() => {
     // loginInit();
     user();
@@ -108,7 +117,7 @@ export default function Home() {
           <ListUser data={userdata} />
         </div>
         <div className="shadow-sm sm:p-5   p-5 w-full rounded-[20px] mb-2  bg-white h-fit">
-          <Profile profile={profile} loginInit={loginInit}  />
+          <Profile profile={profile} loginInit={loginInit} />
         </div>
       </div>
     </div>
