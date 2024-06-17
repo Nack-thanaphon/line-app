@@ -22,7 +22,7 @@ export default function Home() {
   const [count, setCount] = useState(0);
   const [totalSend, setTotalSend] = useState(0);
 
-  
+
   var LiffID = "2005619015-0Bl842BP";
   var LiffUrl = "https://liff.line.me/2005619015-0Bl842BP";
   var LineOa = "https://line.me/R/ti/p/@634aahso";
@@ -77,7 +77,6 @@ export default function Home() {
 
           if (response) {
             setProfile(profile);
-            setStatusSuccess(true);
           }
         } catch (error) {
           console.error(error);
@@ -98,7 +97,7 @@ export default function Home() {
         liff.ready.then(async () => {
           const isFriend = await getFriendship();
           if (liff.isInClient() && liff.isLoggedIn()) {
-            console.log(11111);
+            // console.log(11111);
             await fetchUserProfile();
           } else if (!liff.isInClient() && !isFriend) {
             // console.log(22222)
@@ -118,6 +117,7 @@ export default function Home() {
     const friend = await liff.getFriendship();
     return friend.friendFlag;
   };
+  
   useEffect(() => {
     checkTotalSend();
     user();
