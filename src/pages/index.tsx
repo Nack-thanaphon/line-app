@@ -15,18 +15,16 @@ interface Profile {
   pictureUrl?: string;
 }
 
-
 export default function Home() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [userdata, setUserdata] = useState([]);
   const [count, setCount] = useState(0);
   const [totalSend, setTotalSend] = useState(0);
 
-
   var LiffID = "2005619015-0Bl842BP";
   var LiffUrl = "https://liff.line.me/2005619015-0Bl842BP";
   var LineOa = "https://line.me/R/ti/p/@634aahso";
-  
+
   var Token =
     "e1l7kAgUdMdDoCmJs3xyDu0R1yXIGedLufWKFYcAGQjgERyrPzImX6w14qLAXKWC/ZHsPuaRNR84k4V03tn0ZakqxVCLdTwChapiTEn1NnnW1nfvqhDlx0KFHMk8wRUXuFoeFZy5NlcnTpEKGT3hdAdB04t89/1O/w1cDnyilFU=";
 
@@ -117,11 +115,13 @@ export default function Home() {
     const friend = await liff.getFriendship();
     return friend.friendFlag;
   };
-  
+
   useEffect(() => {
     checkTotalSend();
     user();
+    loginInit()
   }, []);
+  
   return (
     <div className="my-5">
       <div className="sm:text-center mb-4 p-6 bg-white sm:m-4 m-4 rounded-[10px]">
