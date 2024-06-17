@@ -27,6 +27,7 @@ export default function Home() {
   const [userdata, setUserdata] = useState([]);
   const [count, setCount] = useState(0);
   const [totalSend, setTotalSend] = useState(0);
+  const [statusSuccess, setStatusSuccess] = useState(false);
 
   const user = async () => {
     try {
@@ -75,6 +76,7 @@ export default function Home() {
 
           if (response) {
             setProfile(profile);
+            setStatusSuccess(true);
           }
         } catch (error) {
           console.error(error);
@@ -94,12 +96,15 @@ export default function Home() {
       .then(() => {
         liff.ready.then(async () => {
           const isFriend = await getFriendship();
+
           if (liff.isInClient() || liff.isLoggedIn()) {
-            if (!isFriend) {
-              alert("กรุณาเพิ่มเพื่อนก่อนใช้งาน");
-              window.location.href = LineOa;
-            } else {
-              await fetchUserProfile();
+            const LoginSuccess = await fetchUserProfile();
+
+            if (statusSuccess) {
+              if (!isFriend) {
+                alert("กรุณาเพิ่มเพื่อนก่อนใช้งาน");
+                window.location.href = LineOa;
+              }
             }
           } else {
             liff.login({
