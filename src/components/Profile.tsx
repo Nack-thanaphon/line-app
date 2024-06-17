@@ -6,12 +6,24 @@ var Token =
 var groupId = "Ccd2e64934b5aeac2fc44551f32f51940";
 
 const now = new Date();
-const currentTime = now.toLocaleTimeString();
+
+const date = now.toLocaleDateString('en-GB', {
+  day: '2-digit',
+  month: '2-digit',
+  year: '2-digit'
+});
+
+const time = now.toLocaleTimeString('en-GB', {
+  hour: '2-digit',
+  minute: '2-digit'
+});
+
+const formattedDateTime = `${date} เวลา ${time}`;
 
 const DataforSend = (userId: string, userName: string) => {
   const message = {
     type: "flex",
-    altText: "🏥 Server Status",
+    altText: "BOT-ALERT : Server-Status",
     contents: {
       type: "bubble",
       hero: {
@@ -33,7 +45,7 @@ const DataforSend = (userId: string, userName: string) => {
         contents: [
           {
             type: "text",
-            text: userName !== "" ? "สวัสดีคุณ " + userName : "report",
+            text: userName !== "" ? "สวัสดีคุณ " + userName : "Report",
             contents: []
           },
           {
@@ -107,7 +119,7 @@ const DataforSend = (userId: string, userName: string) => {
                   },
                   {
                     type: "text",
-                    text: currentTime,
+                    text: formattedDateTime,
                     size: "sm",
                     color: "#666666",
                     flex: 4,
