@@ -225,12 +225,9 @@ async function sendPost(
   }
 }
 
-const logout = () => {
-  liff.logout();
-  localStorage.clear();
-};
 
-function Profile({ profile, loginInit, checkTotalSend }: any) {
+
+function Profile({ profile, loginInit, checkTotalSend ,logout}: any) {
   if (!profile)
     return (
       <div className="py-6">
@@ -302,7 +299,7 @@ function Profile({ profile, loginInit, checkTotalSend }: any) {
       <div className=" mt-[2px]">
         <button
           className="curser-pointer bg-red-400 active:bg-red-600 text-white rounded-[10px] p-5 font-bold w-full mb-2 sm:mr-1"
-          onClick={() => logout()}
+          onClick={() => logout}
         >
           ออกจากระบบ
         </button>

@@ -112,6 +112,11 @@ export default function Home() {
     return friend.friendFlag;
   };
 
+  const logout = () => {
+    liff.logout();
+    localStorage.clear();
+  };
+
   const userData = localStorage.getItem("userData");
   useEffect(() => {
     checkTotalSend();
@@ -147,6 +152,7 @@ export default function Home() {
             profile={profile}
             loginInit={loginInit}
             checkTotalSend={checkTotalSend}
+            logout={logout}
           />
         </div>
       </div>
