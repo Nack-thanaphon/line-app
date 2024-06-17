@@ -209,11 +209,12 @@ async function sendPost(
     });
 
     if (response.data.message === "success") {
-      checkTotalSend();
       Swal.fire({
         title: "สำเร็จ!",
         text: "ส่งข้อความสำเร็จ",
         icon: "success"
+      }).then(() => {
+        checkTotalSend();
       });
     }
     return response.data;
