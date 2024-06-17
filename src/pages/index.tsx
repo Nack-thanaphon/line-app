@@ -15,6 +15,13 @@ interface Profile {
   pictureUrl?: string;
 }
 
+let LiffID = "2005619015-0Bl842BP";
+let LiffUrl = "https://liff.line.me/2005619015-0Bl842BP";
+let LineOa = "https://line.me/R/ti/p/@634aahso";
+
+let Token =
+  "e1l7kAgUdMdDoCmJs3xyDu0R1yXIGedLufWKFYcAGQjgERyrPzImX6w14qLAXKWC/ZHsPuaRNR84k4V03tn0ZakqxVCLdTwChapiTEn1NnnW1nfvqhDlx0KFHMk8wRUXuFoeFZy5NlcnTpEKGT3hdAdB04t89/1O/w1cDnyilFU=";
+
 export default function Home() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [userdata, setUserdata] = useState([]);
@@ -33,13 +40,6 @@ export default function Home() {
       console.error(error);
     }
   };
-
-  let LiffID = "2005619015-0Bl842BP";
-  let LiffUrl = "https://liff.line.me/2005619015-0Bl842BP";
-  let LineOa = "https://line.me/R/ti/p/@634aahso";
-
-  let Token =
-    "e1l7kAgUdMdDoCmJs3xyDu0R1yXIGedLufWKFYcAGQjgERyrPzImX6w14qLAXKWC/ZHsPuaRNR84k4V03tn0ZakqxVCLdTwChapiTEn1NnnW1nfvqhDlx0KFHMk8wRUXuFoeFZy5NlcnTpEKGT3hdAdB04t89/1O/w1cDnyilFU=";
 
   const checkTotalSend = async () => {
     try {
@@ -110,8 +110,6 @@ export default function Home() {
         });
       });
   };
-
-
 
   const getFriendship = async () => {
     const friend = await liff.getFriendship();
