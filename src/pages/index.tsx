@@ -97,11 +97,14 @@ export default function Home() {
         liff.ready.then(async () => {
           const isFriend = await getFriendship();
           if (liff.isInClient() && liff.isLoggedIn()) {
+            console.log(11111)
             await fetchUserProfile();
           } else if (!liff.isInClient() && !isFriend) {
+            console.log(22222)
             alert("กรุณาเพิ่มเพื่อนก่อนใช้งาน");
             window.location.href = LineOa;
           } else {
+            console.log(33333)
             liff.login({
               redirectUri: LiffUrl
             });
