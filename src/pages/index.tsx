@@ -98,11 +98,20 @@ export default function Home() {
           const isFriend = await getFriendship();
           if (liff.isInClient() || liff.isLoggedIn()) {
             await fetchUserProfile();
-          } else {
-            await liff.login({
-              redirectUri: LiffUrl
-            });
           }
+        });
+      });
+  };
+
+  const PressloginIn = () => {
+    liff
+      .init({
+        liffId: LiffID,
+        withLoginOnExternalBrowser: true
+      })
+      .then(() => {
+        liff.login({
+          redirectUri: LiffUrl
         });
       });
   };
@@ -119,7 +128,7 @@ export default function Home() {
 
   useEffect(() => {
     checkTotalSend();
-    fetchUserProfile();
+    loginInit()
     user();
   }, []);
 
@@ -147,7 +156,7 @@ export default function Home() {
         <div className="shadow-sm sm:p-5   p-5 w-full rounded-[20px] mb-2  bg-white h-fit">
           <Profile
             profile={profile}
-            loginInit={loginInit}
+            loginInit={PressloginIn}
             checkTotalSend={checkTotalSend}
             logout={logout}
           />
