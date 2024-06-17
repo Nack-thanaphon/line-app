@@ -15,19 +15,20 @@ interface Profile {
   pictureUrl?: string;
 }
 
-let LiffID = "2005619015-0Bl842BP";
-let LiffUrl = "https://liff.line.me/2005619015-0Bl842BP";
-let LineOa = "https://line.me/R/ti/p/@634aahso";
-
-let Token =
-  "e1l7kAgUdMdDoCmJs3xyDu0R1yXIGedLufWKFYcAGQjgERyrPzImX6w14qLAXKWC/ZHsPuaRNR84k4V03tn0ZakqxVCLdTwChapiTEn1NnnW1nfvqhDlx0KFHMk8wRUXuFoeFZy5NlcnTpEKGT3hdAdB04t89/1O/w1cDnyilFU=";
 
 export default function Home() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [userdata, setUserdata] = useState([]);
   const [count, setCount] = useState(0);
   const [totalSend, setTotalSend] = useState(0);
-  const [statusSuccess, setStatusSuccess] = useState(false);
+
+  
+  var LiffID = "2005619015-0Bl842BP";
+  var LiffUrl = "https://liff.line.me/2005619015-0Bl842BP";
+  var LineOa = "https://line.me/R/ti/p/@634aahso";
+  
+  var Token =
+    "e1l7kAgUdMdDoCmJs3xyDu0R1yXIGedLufWKFYcAGQjgERyrPzImX6w14qLAXKWC/ZHsPuaRNR84k4V03tn0ZakqxVCLdTwChapiTEn1NnnW1nfvqhDlx0KFHMk8wRUXuFoeFZy5NlcnTpEKGT3hdAdB04t89/1O/w1cDnyilFU=";
 
   const user = async () => {
     try {
@@ -97,14 +98,14 @@ export default function Home() {
         liff.ready.then(async () => {
           const isFriend = await getFriendship();
           if (liff.isInClient() && liff.isLoggedIn()) {
-            console.log(11111)
+            console.log(11111);
             await fetchUserProfile();
           } else if (!liff.isInClient() && !isFriend) {
-            console.log(22222)
+            // console.log(22222)
             alert("กรุณาเพิ่มเพื่อนก่อนใช้งาน");
             window.location.href = LineOa;
           } else {
-            console.log(33333)
+            // console.log(33333)
             liff.login({
               redirectUri: LiffUrl
             });
