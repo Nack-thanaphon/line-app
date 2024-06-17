@@ -21,10 +21,10 @@ export default function Home() {
   const [count, setCount] = useState(0);
   const [totalSend, setTotalSend] = useState(0);
 
-  let  LiffID = "2005619015-0Bl842BP";
-  let  LiffUrl = "https://liff.line.me/2005619015-0Bl842BP";
-  let  LineOa = "https://line.me/R/ti/p/@634aahso";
-  let  Token =
+  let LiffID = "2005619015-0Bl842BP";
+  let LiffUrl = "https://liff.line.me/2005619015-0Bl842BP";
+  let LineOa = "https://line.me/R/ti/p/@634aahso";
+  let Token =
     "e1l7kAgUdMdDoCmJs3xyDu0R1yXIGedLufWKFYcAGQjgERyrPzImX6w14qLAXKWC/ZHsPuaRNR84k4V03tn0ZakqxVCLdTwChapiTEn1NnnW1nfvqhDlx0KFHMk8wRUXuFoeFZy5NlcnTpEKGT3hdAdB04t89/1O/w1cDnyilFU=";
 
   const user = async () => {
@@ -58,30 +58,31 @@ export default function Home() {
   };
 
   const fetchUserProfile = async () => {
-    try {
-      liff.getProfile().then(async (profile) => {
-        try {
-          const data = {
-            userId: profile.userId,
-            displayName: profile.displayName,
-            statusMessage: profile.statusMessage,
-            pictureUrl: profile.pictureUrl
-          };
-          const response = await axios.post(
-            "https://line-webhook-s2nn.onrender.com/user/create-user",
-            data
-          );
+    const isFriend = await getFriendship();
+    liff.getProfile().then(async (profile) => {
+      try {
+        const data = {
+          userId: profile.userId,
+          displayName: profile.displayName,
+          statusMessage: profile.statusMessage,
+          pictureUrl: profile.pictureUrl
+        };
 
-          if (response) {
-            setProfile(profile);
-          }
-        } catch (error) {
-          console.error(error);
+        const response = await axios.post(
+          "https://line-webhook-s2nn.onrender.com/user/create-user",
+          data
+        );
+
+        if (isFriend && response) {
+          setProfile(profile);
+        } else {
+          alert("กรุณาเพิ่มเพื่อนก่อนใช้งาน");
+          window.location.href = LineOa;
         }
-      });
-    } catch (error) {
-      console.error("Error fetching profile: ", error);
-    }
+      } catch (error) {
+        console.error(error);
+      }
+    });
   };
 
   const loginInit = () => {
@@ -95,9 +96,6 @@ export default function Home() {
           const isFriend = await getFriendship();
           if (liff.isInClient() || liff.isLoggedIn()) {
             await fetchUserProfile();
-          } else if (!liff.isInClient() && !isFriend) {
-            alert("กรุณาเพิ่มเพื่อนก่อนใช้งาน");
-            window.location.href = LineOa;
           } else {
             await liff.login({
               redirectUri: LiffUrl
