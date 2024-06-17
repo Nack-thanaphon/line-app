@@ -43,7 +43,7 @@ export default function Home() {
 
   const checkTotalSend = async () => {
     try {
-      const response = await axios.post(
+      const response = await axios.get(
         "https://line-webhook-s2nn.onrender.com/getTotalSend",
         {
           headers: {
