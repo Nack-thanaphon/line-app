@@ -43,8 +43,8 @@ export default function Home() {
 
   const checkTotalSend = async () => {
     try {
-      const response = await axios.get(
-        "https://api.line.me/v2/bot/message/quota",
+      const response = await axios.post(
+        "https://line-webhook-s2nn.onrender.com/getTotalSend",
         {
           headers: {
             "Content-Type": "application/json",
@@ -52,7 +52,7 @@ export default function Home() {
           }
         }
       );
-      setTotalSend(response.data.value);
+      setTotalSend(response.data.totalUsage);
     } catch (error) {
       console.error(error);
     }
