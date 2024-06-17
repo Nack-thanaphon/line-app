@@ -95,18 +95,17 @@ export default function Home() {
         liff.ready.then(async () => {
           const isFriend = await getFriendship();
           if (liff.isInClient() || liff.isLoggedIn()) {
-            await fetchUserProfile();
+            if (!isFriend) {
+              alert("กรุณาเพิ่มเพื่อนก่อนใช้งาน");
+              window.location.href = LineOa;
+            } else {
+              await fetchUserProfile();
+            }
+          } else {
+            liff.login({
+              redirectUri: LiffUrl
+            });
           }
-
-          if (!liff.isInClient() && !isFriend) {
-            alert("กรุณาเพิ่มเพื่อนก่อนใช้งาน");
-            window.location.href = LineOa;
-          }
-          // else {
-          //   // await liff.login({
-          //   //   redirectUri: LiffUrl
-          //   // });
-          // }
         });
       });
   };
