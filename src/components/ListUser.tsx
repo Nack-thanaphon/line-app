@@ -1,7 +1,11 @@
 import React from "react";
 
 function ListUser({ data }: any) {
-  console.log(data);
+  // console.log(data);'
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+  
   return (
     <div className="mt-4">
       <div className="flex overflow-x-scroll my-4">

@@ -15,7 +15,6 @@ interface Profile {
   pictureUrl?: string;
 }
 
-
 export default function Home() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [userdata, setUserdata] = useState([]);
@@ -28,7 +27,7 @@ export default function Home() {
       );
       // console.log(response.data)
       setUserdata(response.data);
-      setCount(response.data.length)
+      setCount(response.data.length);
     } catch (error) {
       console.error(error);
     }
@@ -74,17 +73,18 @@ export default function Home() {
         liff.ready.then(async () => {
           if (liff.isInClient() || liff.isLoggedIn()) {
             await fetchUserProfile();
-          } else {
-            await liff.login({
-              redirectUri: LiffUrl
-            });
-          }
+          } 
+          // else {
+          //   // await liff.login({
+          //   //   redirectUri: LiffUrl
+          //   // });
+          // }
         });
       });
   };
 
   useEffect(() => {
-    loginInit();
+    // loginInit();
     user();
   }, []);
   return (
@@ -108,7 +108,7 @@ export default function Home() {
           <ListUser data={userdata} />
         </div>
         <div className="shadow-sm sm:p-5   p-5 w-full rounded-[20px] mb-2  bg-white h-fit">
-          <Profile profile={profile} />
+          <Profile profile={profile} loginInit={loginInit}  />
         </div>
       </div>
     </div>

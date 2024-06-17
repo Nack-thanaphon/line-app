@@ -7,15 +7,15 @@ var groupId = "Ccd2e64934b5aeac2fc44551f32f51940";
 
 const now = new Date();
 
-const date = now.toLocaleDateString('en-GB', {
-  day: '2-digit',
-  month: '2-digit',
-  year: '2-digit'
+const date = now.toLocaleDateString("en-GB", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "2-digit"
 });
 
-const time = now.toLocaleTimeString('en-GB', {
-  hour: '2-digit',
-  minute: '2-digit'
+const time = now.toLocaleTimeString("en-GB", {
+  hour: "2-digit",
+  minute: "2-digit"
 });
 
 const formattedDateTime = `${date} เวลา ${time}`;
@@ -218,11 +218,25 @@ async function sendPost(userId: string, displayName: string) {
   }
 }
 
-function Profile({ profile }: any) {
+function Profile({ profile, loginInit }: any) {
   if (!profile)
     return (
-      <div>
-        <p>ไม่พบข้อมูล</p>
+      <div className="py-6">
+        <div className="mb-3 py-4">
+          <p className="sm:text-[2rem] font-bold">ไม่พบข้อมูล</p>
+        </div>
+        <div
+          onClick={loginInit}
+          className="curser-pointer bg-green-400 active:bg-green-600 text-black rounded-[10px] p-5  w-full  flex justify-center mb-2 my-auto"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/2/2e/LINE_New_App_Icon_%282020-12%29.png"
+            className="w-[40px] mr-4"
+          />{" "}
+          <div className="my-auto font-bold">
+          Login With Line
+          </div>
+        </div>
       </div>
     );
 
