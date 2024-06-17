@@ -227,7 +227,7 @@ async function sendPost(
 
 
 
-function Profile({ profile, loginInit, checkTotalSend ,logout}: any) {
+function Profile({ profile, PressloginIn, checkTotalSend ,logout}: any) {
   if (!profile)
     return (
       <div className="py-6">
@@ -235,7 +235,7 @@ function Profile({ profile, loginInit, checkTotalSend ,logout}: any) {
           <p className="sm:text-[2rem] font-bold">ไม่พบข้อมูล</p>
         </div>
         <div
-          onClick={loginInit}
+          onClick={PressloginIn}
           className="curser-pointer bg-green-400 active:bg-green-600 text-black rounded-[10px] p-5  w-full  flex justify-center mb-2 my-auto"
         >
           <img

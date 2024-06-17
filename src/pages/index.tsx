@@ -21,8 +21,8 @@ export default function Home() {
   const [count, setCount] = useState(0);
   const [totalSend, setTotalSend] = useState(0);
 
-  let LiffID = "1657050731-MxEnGB7N";
-  let LiffUrl = "https://liff.line.me/1657050731-MxEnGB7N";
+  let LiffID = "2005619015-0Bl842BP";
+  let LiffUrl = "https://liff.line.me/2005619015-0Bl842BP";
   let LineOa = "https://line.me/R/ti/p/@634aahso";
   let Token =
     "e1l7kAgUdMdDoCmJs3xyDu0R1yXIGedLufWKFYcAGQjgERyrPzImX6w14qLAXKWC/ZHsPuaRNR84k4V03tn0ZakqxVCLdTwChapiTEn1NnnW1nfvqhDlx0KFHMk8wRUXuFoeFZy5NlcnTpEKGT3hdAdB04t89/1O/w1cDnyilFU=";
@@ -156,7 +156,7 @@ export default function Home() {
         <div className="shadow-sm sm:p-5   p-5 w-full rounded-[20px] mb-2  bg-white h-fit">
           <Profile
             profile={profile}
-            loginInit={PressloginIn}
+            PressloginIn={PressloginIn}
             checkTotalSend={checkTotalSend}
             logout={logout}
           />
