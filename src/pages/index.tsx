@@ -96,7 +96,9 @@ export default function Home() {
           const isFriend = await getFriendship();
           if (liff.isInClient() || liff.isLoggedIn()) {
             await fetchUserProfile();
-          } else if (!isFriend) {
+          }
+
+          if (!liff.isInClient() && !isFriend) {
             alert("กรุณาเพิ่มเพื่อนก่อนใช้งาน");
             window.location.href = LineOa;
           }
@@ -109,19 +111,13 @@ export default function Home() {
       });
   };
 
-  const isLogin = async () => {
-    if (liff.isInClient() || liff.isLoggedIn()) {
-      await fetchUserProfile();
-    }
-  };
+
 
   const getFriendship = async () => {
     const friend = await liff.getFriendship();
     return friend.friendFlag;
   };
   useEffect(() => {
-    // loginInit();
-    isLogin()
     checkTotalSend();
     user();
   }, []);
