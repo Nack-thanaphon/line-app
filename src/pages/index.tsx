@@ -36,7 +36,7 @@ export default function Home() {
   let LiffID = "2005619015-0Bl842BP";
   let LiffUrl = "https://liff.line.me/2005619015-0Bl842BP";
   let LineOa = "https://line.me/R/ti/p/@634aahso";
-  
+
   const fetchUserProfile = async () => {
     try {
       liff.getProfile().then(async (profile) => {
@@ -77,6 +77,7 @@ export default function Home() {
             await fetchUserProfile();
           }
           if (!isFriend) {
+            alert("กรุณาเพิ่มเพื่อนก่อนใช้งาน")
             window.location.href = LineOa;
           }
           // else {
