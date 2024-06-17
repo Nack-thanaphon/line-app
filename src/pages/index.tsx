@@ -122,7 +122,6 @@ export default function Home() {
   };
 
   const logout = () => {
-    localStorage.clear();
     liff.logout()
     window.location.reload()
   };
