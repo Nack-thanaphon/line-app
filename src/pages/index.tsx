@@ -21,10 +21,11 @@ export default function Home() {
   const [count, setCount] = useState(0);
   const [totalSend, setTotalSend] = useState(0);
 
-  let LiffID = "2005619015-0Bl842BP";
-  let LiffUrl = "https://liff.line.me/2005619015-0Bl842BP";
-  let LineOa = "https://line.me/R/ti/p/@634aahso";
-  let Token =
+  let LiffID = "2005643824-J4kOP28n";
+  let LiffUrl = "https://liff.line.me/2005643824-J4kOP28n";
+  let LineOa = "https://line.me/R/ti/p/@328uuvhx";
+
+  let channelToken =
     "pWqFwpY+tRl3iWvE23+o0cepAVBn/FiIMmsvuSKnJYMUujvdrCboe5/frjph7zSI8uWpCaTv9Yl24UBtSlVJPfsUHhGJlnaNL8qz25UR46BOjE3juEHYsY0G7DF1RQqbnegMGE3RE8cCKb+ajdxgHwdB04t89/1O/w1cDnyilFU=";
 
   const user = async () => {
@@ -47,7 +48,7 @@ export default function Home() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${Token}`
+            Authorization: `Bearer ${channelToken}`
           }
         }
       );
@@ -122,13 +123,13 @@ export default function Home() {
   };
 
   const logout = () => {
-    liff.logout()
-    window.location.reload()
+    liff.logout();
+    window.location.reload();
   };
 
   useEffect(() => {
     checkTotalSend();
-    loginInit()
+    loginInit();
     user();
   }, []);
 
