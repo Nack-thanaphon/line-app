@@ -24,7 +24,7 @@ export default function Home() {
   let LiffID = "2005643824-J4kOP28n";
   let LiffUrl = "https://liff.line.me/2005643824-J4kOP28n";
   let LineOa = "https://line.me/R/ti/p/@328uuvhx";
-  let Token =
+  let txt =
     "pWqFwpY+tRl3iWvE23+o0cepAVBn/FiIMmsvuSKnJYMUujvdrCboe5/frjph7zSI8uWpCaTv9Yl24UBtSlVJPfsUHhGJlnaNL8qz25UR46BOjE3juEHYsY0G7DF1RQqbnegMGE3RE8cCKb+ajdxgHwdB04t89/1O/w1cDnyilFU=";
 
   const user = async () => {
@@ -47,7 +47,7 @@ export default function Home() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${Token}`
+            Authorization: `Bearer ${txt}`
           }
         }
       );
