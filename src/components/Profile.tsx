@@ -2,8 +2,9 @@ import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import liff from "@line/liff";
-var Token =
-  "e1l7kAgUdMdDoCmJs3xyDu0R1yXIGedLufWKFYcAGQjgERyrPzImX6w14qLAXKWC/ZHsPuaRNR84k4V03tn0ZakqxVCLdTwChapiTEn1NnnW1nfvqhDlx0KFHMk8wRUXuFoeFZy5NlcnTpEKGT3hdAdB04t89/1O/w1cDnyilFU=";
+let channelToken =
+"pWqFwpY+tRl3iWvE23+o0cepAVBn/FiIMmsvuSKnJYMUujvdrCboe5/frjph7zSI8uWpCaTv9Yl24UBtSlVJPfsUHhGJlnaNL8qz25UR46BOjE3juEHYsY0G7DF1RQqbnegMGE3RE8cCKb+ajdxgHwdB04t89/1O/w1cDnyilFU=";
+
 var groupId = "Ccd2e64934b5aeac2fc44551f32f51940";
 
 const now = new Date();
@@ -205,7 +206,7 @@ async function sendPost(
     const response = await axios.post(url, data, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${Token}`
+        Authorization: `Bearer ${channelToken}`
       }
     });
 
