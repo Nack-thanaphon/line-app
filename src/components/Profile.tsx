@@ -200,7 +200,7 @@ async function sendPost(
   checkTotalSend: any
 ) {
   const url = "https://line-webhook-s2nn.onrender.com/sendLine";
-  const data = DataforSend(userId, displayName);
+  const data = await DataforSend(userId, displayName);
   try {
     const response = await axios.post(url, data, {
       headers: {
